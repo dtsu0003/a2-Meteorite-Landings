@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <script src="vega_lite_vis.js"></script>
+
+    <style>
+        .page {
+            margin: 0 auto;
+            max-width: 1300px;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            gap: 30px;                  /* spacing between columns */
+            align-items: flex-start;    /* align items to the top */
+            width: 100%;                /* screen width */
+            margin: 40px 0;             /*space between containers*/
+        }
+        .section {
+            flex: 1;                    /* each section takes up equal space */
+            min-width: 200px;
+        }
+        .text_section {
+            flex: 0 0 400px;            /* Don't grow or shrink, width = 400px */
+        }
+        p, a {
+            font-size: 16px;                    /* size in px, em, %, etc. */
+            font-family: 'Arial', sans-serif;   /* fallback fonts */
+            line-height: 1.5;                   /* spacing between lines */
+        }
+        h1 {
+            font-size: 32px;
+            font-family: 'Arial', sans-serif;
+        }
+        h2 {
+            font-size: 24px;
+            font-family: 'Arial', sans-serif;
+        }
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .text_section {
+                width: 100%;
+                max-width: 600px;
+            }
+
+            .section {
+                width: 100%;
+            }
+        }
+
+    </style>
+
+    <title>Meteorite Landings</title>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <h1>What are meteorites?</h1>
+        <div class="container">
+            <div class="text_section">
+                <p>Let's talk definitions first, "meteoroids" are rocks in space; "meteors" are meteoroids that are entering a planet's atmosphere at high speed to burn up and look like shooting stars; and "meteorites" are what's left of a meteor upon landing on the ground. Meteorites have traditionally been divided into 3 broad categories: stony, iron, and stony-iron. Stony meteorites are the vast majority found on Earth, these are classified further into "chondrites" and "achondrites". Chondrites are typically about 4.55 billion years old and are though to represent material from the asteroid belt.</p>
+                <a href="https://en.wikipedia.org/wiki/Meteorite" target="_blank">
+                    source
+                </a>
+            </div>
+            <div id="classtype_freq" class="section"></div>
+            <div id="classtype_mass" class="section"></div>
+        </div>
+
+        <h1>Will you ever see one?</h1>
+        <div class="container">
+            <div id="year_freq" class="section"></div>
+            <div class="text_section">
+                <p>Considering that each year, less than 20 meteor fragments are witnessed falling from the atmosphere, the chances you will ever see one are quite slim. This just means that most of the meteorites recorded have been found a while after they technically become meteorites. In 2003 alone, more than 3000 meteorites have been recorded, but the number of findings are decreasing by the year. So if you ever see a meteor fragment falling from the sky, you can count yourself among the lucky few.</p>
+            </div>
+        </div>
+
+        <h2>Landing sites</h2>
+        <div id="long_lat" class="container"></div>
+        <div id="hubdist_density" class="container"></div>
+
+        <h2>But what if one lands on your head?</h2>
+        <div class="container">
+            <div id="top_mass" class="section"></div>
+            <div class="text_section">
+                <p>Most meteoroids disintegrate when entering the Earth's atmosphere, very few are large enough to make it to Earth's surface and create impact craters. The most frequent meteorites that create large crates are of the iron classification. It is no surprise then that the most famous meteorites are the heaviest recorded iron meteorites, with the top 10 heaviest meteorites all being heavier than 20,000 kilograms. However the average case of recorded meteorites are of the chondrite classification, which are usually recorded at less than 50 grams. Theoretically if a 50 g meteor fragment strikes you, you would probably survive; probably.</p>
+            </div>
+        </div>
+    
+    </div>
+
+</body>
+
+</html>

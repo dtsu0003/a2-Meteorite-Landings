@@ -1,0 +1,35 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Frequency of meteorite landings" },
+    "data": {"url": "data/meteorite_landings_new.csv"},
+    "layer": [
+        {"mark": "line"},
+        {"mark": "point"}
+    ],
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "quantitative",
+            "title": "Year"
+        },
+        "y": {
+            "aggregate": "count",
+            "type": "quantitative",
+            "title": "Frequency"
+        },
+        "color": {
+            "field": "FellFound", 
+            "type": "nominal",
+            "title": "Status",
+            "scale": {"domain": ["Fell", "Found"], "range": ["#1f77b4", "#ff7f0e"]}
+        },
+        "tooltip": [
+            {"field": "Year", "type": "quantitative", "title": "Year"},
+            {"aggregate": "count", "type": "quantitative", "title": "Frequency"},
+            {"field": "FellFound", "type": "nominal", "title": "Status"}
+        ]
+    },
+    "width": 700,
+    "height": 300,
+    "transform": [{ "filter": "datum.Year >= 1970 && datum.Year <= 2015" }]
+}

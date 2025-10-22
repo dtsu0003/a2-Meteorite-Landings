@@ -1,0 +1,23 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Frequency of meteorite landings" },
+    "data": {"url": "data/meteorite_landings_new.csv"},
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "field": "ClassType",
+            "type": "nominal",
+            "title": "General classification"
+        },
+        "color": {"field": "ClassType", "type": "nominal", "legend": null},
+        "y": {
+            "aggregate": "count",
+            "type": "quantitative",
+            "title": "Frequency"
+        },
+        "tooltip": {
+            "aggregate": "count",
+            "type": "quantitative"
+        }
+    }
+}

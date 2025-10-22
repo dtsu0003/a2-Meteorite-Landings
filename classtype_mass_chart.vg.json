@@ -1,0 +1,32 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Mass of meteorite landings"},
+    "data": {"url": "data/meteorite_landings_new.csv"},
+    "mark": {
+        "type": "boxplot",
+        "extent": "min-max"
+    },
+    "encoding": {
+        "x": {
+            "field": "ClassType",
+            "type": "nominal",
+            "title": "General classification"
+        },
+        "y": {
+            "field": "Mass",
+            "type": "quantitative",
+            "scale": {"type": "log"},
+            "title": "Mass (g) log scale"
+        },
+        "color": {
+            "field": "ClassType",
+            "type": "nominal",
+            "legend": null
+        },
+        "tooltip": {
+            "field": "Mass",
+            "type": "quantitative"
+        }
+    },
+    "transform": [{"filter": "datum.Mass > 0" }]
+}

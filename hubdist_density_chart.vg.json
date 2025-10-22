@@ -1,0 +1,26 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "How far away are meteorites found away from cities",
+    "data": {"url": "data/meteorite_landings_new.csv"},
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "field": "HubDist",
+            "type": "quantitative",
+            "bin": {"maxbins": 50},
+            "title": "Distance to Nearest City (km)"
+        },
+        "y": {
+            "aggregate": "count",
+            "type": "quantitative",
+            "title": "Frequency"
+        },
+        "tooltip": [
+            {"bin": true, "field": "HubDist", "type": "quantitative", "title": "Distance Bin (km)"},
+            {"aggregate": "count", "type": "quantitative", "title": "Count"}
+        ]
+    },
+    "width": 700,
+    "height": 300,
+    "transform": [{ "filter": "datum.HubDist <= 6000" }]
+}

@@ -1,0 +1,45 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Top 10 Heaviest Meteorites by Mass",
+    "data": {"url": "data/meteorite_landings_new.csv"},
+    "transform": [
+        {
+            "calculate": "toNumber(datum.Mass)",
+            "as": "MassNum"
+        },
+        {"filter": "datum.MassNum != null"},
+        {
+            "window": [{"op": "rank", "as": "rank"}],
+            "sort": [{"field": "MassNum", "order": "descending"}]
+        },
+        {"filter": "datum.rank <= 10"}
+    ],
+    "mark": "bar",
+    "encoding": {
+        "x": {
+        "field": "Name",
+        "type": "nominal",
+        "sort": "-y",
+        "title": "Meteorite Name",
+        "axis": { "labelAngle": -45 }
+        },
+        "y": {
+        "field": "MassNum",
+        "type": "quantitative",
+        "title": "Mass (g)"
+        },
+        "color": {
+        "value": "#1f77b4"
+        },
+        "tooltip": [
+        {"field": "Name", "type": "nominal", "title": "Meteorite"},
+        {"field": "MassNum", "type": "quantitative", "title": "Mass (g)", "format": ","},
+        {"field": "ClassType", "type": "nominal", "title": "General Classification"},
+        {"field": "Country", "type": "nominal", "title": "Country"},
+        {"field": "HubName", "type": "nominal", "title": "Nearest city"}
+        
+        ]
+    },
+    "width": 700,
+    "height": 400
+}
