@@ -2,12 +2,42 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Top 10 Heaviest Meteorites by Mass",
     "data": {"url": "data/meteorite_landings_new.csv"},
+    "params": [{
+        "name": "country_param",
+        "value": "All",
+        "bind": {
+            "input": "select",
+            "options": [
+                "All",
+                "Canada",
+                "Denmark",
+                "United States of America",
+                "Australia",
+                "Russia",
+                "Mexico",
+                "People's Republic of China",
+                "Argentina",
+                "Brazil"
+            ],
+            "labels": [
+                "All Countries",
+                "Canada",
+                "Denmark",
+                "United States",
+                "Australia",
+                "Russia",
+                "Mexico",
+                "China",
+                "Argentina",
+                "Brazil"
+            ],
+            "name": "Select Country: "
+        }
+    }],
     "transform": [
-        {
-            "calculate": "toNumber(datum.Mass)",
-            "as": "MassNum"
-        },
+        {"calculate": "toNumber(datum.Mass)", "as": "MassNum"},
         {"filter": "datum.MassNum != null"},
+        {"filter": "country_param == 'All' || datum.Country == country_param"},
         {
             "window": [{"op": "rank", "as": "rank"}],
             "sort": [{"field": "MassNum", "order": "descending"}]
